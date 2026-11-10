@@ -22,10 +22,11 @@ public class Viaje
         foreach (var chofer in choferes)
         {
             if (chofer.TieneSuperposicionHoraria(fechaProgramada, fechaFin))
-        }
+       
             {
                 throw new ChoferOcupadoException($"El chofer {chofer.Nombre} ya se encuentra asignado a otro viaje en el mismo horario.");
             }
+        }
         
         this.codigo = codigo;
         this.origen = origen;
