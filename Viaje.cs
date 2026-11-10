@@ -61,34 +61,26 @@ public class Viaje
     
     public void GenerarInformeCSV()
     {
-        string nombreArchivo = $"Informe_Viaje_{codigo}.csv";
-        
-        using (StreamWriter writer = new StreamWriter(nombreArchivo))
+        string path = $"Informe_Viaje_{codigo}.csv";
+
+        using (StreamWriter sw = new StreamWriter(path))
         {
-            writer.WriteLine("--- INFORME DE VIAJE ---");
-            writer.WriteLine($"Identificacion del Viaje,{codigo}");
-            writer.WriteLine($"Ruta,{origen} - {destino}");
-            writer.WriteLine($"Distancia ,{distancia} km");
-            writer.WriteLine($"Vehiculo Utilizado,{vehiculo.matricula} ({vehiculo.codigoInterno})");
-            writer.WriteLine($"Kilometraje Recorrido,{vehiculo.kilometraje} km");
-            writer.WriteLine("--- CHOFERES ASIGNADOS ---");
+            sw.WriteLine("IdentificacionViaje;Vehiculo;Choferes;KilometrajeRecorrido;CostoOperativoVehiculo;CostoSueldosChoferes;CostoTotal");
+
             
-            foreach (var chofer in choferes)
-            {
-                writer.WriteLine("Chofer,{chofer.nombre} (DNI: {chofer.dni})");
-            }
+            string nombresChoferes = string.Join(" / ", choferesAsignados.Select(c => c.Nombre));
 
-            decimal costoVehiculo = vehiculo.CalcularCostoOperativo(distancia, carga);
-            decimal costoChoferesTotal = 0;
-            foreach (var chofer in choferes)
-            {
-                costoChoferesTotal += chofer.SueldoBasico;
-            }
-
-            writer.WriteLine("--- COSTOS DESGLOSADOS ---");
-            writer.WriteLine($"Costo Operativo Vehiculo,{costoVehiculo}");
-            writer.WriteLine($"Costo Total Sueldos Choferes,{costoChoferesTotal}");
-            writer.WriteLine($"COSTO TOTAL DEL VIAJE,{CalcularCostoTotal()}");
+           
+            sw.WriteLine("{0};{1};{2};{3} km;${4};${5};${6}",
+                codigo,
+                vehiculo.Matricula,
+                nombresChoferes,
+                distancia,
+                CalcularCostoVehiculo(),
+                CalcularCostoSueldosChoferes(),
+                CalcularCostoTotal()
+            );
         }
-    }
-}
+
+        Console.WriteLine($"¡Verificación exitosa! Se generó el archivo: {path}");
+    
