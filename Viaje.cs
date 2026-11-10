@@ -44,7 +44,7 @@ public class Viaje
     }
 
     // 3. MÉTODOS DE CÁLCULO Y GESTIÓN INTERNA
-    public decimal CalcularCostoTotal()
+    public double CalcularCostoTotal()
     {
         double costoVehiculo = vehiculo.CalcularCostoOperativo(distancia, carga);
         
@@ -68,7 +68,7 @@ public class Viaje
             sw.WriteLine("IdentificacionViaje;Vehiculo;Choferes;KilometrajeRecorrido;CostoOperativoVehiculo;CostoSueldosChoferes;CostoTotal");
 
             
-            string nombresChoferes = string.Join(" / ", choferesAsignados.Select(c => c.Nombre));
+            string nombresChoferes = string.Join(" / ", choferes.Select(c => c.Nombre));
 
            
             sw.WriteLine("{0};{1};{2};{3} km;${4};${5};${6}",
