@@ -21,7 +21,7 @@ public class Viaje
         }
         foreach (var chofer in choferes)
         {
-            if (chofer.TieneSuperposicionHoraria(fechaHoraSalida, fechaHoraLlegada))
+            if (chofer.TieneSuperposicionHoraria(fechaProgramada, fechaFin))
             {
                 throw new ChoferOcupadoException($"El chofer {chofer.Nombre} ya se encuentra asignado a otro viaje en el mismo horario.");
             }
@@ -46,7 +46,7 @@ public class Viaje
     // 3. MÉTODOS DE CÁLCULO Y GESTIÓN INTERNA
     public decimal CalcularCostoTotal()
     {
-        double costoVehiculo = vehiculo.CalcularCostoOperativo(distanciaEstimada, cargaTotal);
+        double costoVehiculo = vehiculo.CalcularCostoOperativo(distancia, carga);
         
         // Suma de sueldos básicos de los choferes
         double sueldoChoferes = 0;
