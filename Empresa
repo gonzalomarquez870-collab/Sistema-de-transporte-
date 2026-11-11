@@ -1,0 +1,10 @@
+using System;
+
+public class Empresa
+{
+private string nombre;
+private string cuit;
+private List <chofer> choferes;
+private List <Vehiculo> vehiculo;
+
+}
