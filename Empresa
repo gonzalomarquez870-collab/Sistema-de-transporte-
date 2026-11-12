@@ -15,3 +15,5 @@ public void ListarChoferes()
 {
 	   Console.WriteLine($"- Nombre: {chofer.nombre} | DNI: {chofer.dni}");
 }
+
+Necesito un get en dni de Chofer XD
