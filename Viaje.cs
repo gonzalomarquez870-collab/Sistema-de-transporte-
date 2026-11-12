@@ -10,7 +10,7 @@ public class Viaje
     private string destino;
     private double distancia;
     private DateTime FechaProgramada;
-    Private DateTime FechaFin;
+    private DateTime FechaFin;
     private double carga;
     private Vehiculo vehiculo;
     private List<Chofer> choferes;
