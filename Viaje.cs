@@ -21,7 +21,7 @@ public class Viaje
         }
         foreach (var chofer in choferes)
         {
-            if (chofer.disponible(fechaProgramada, fechaFin))
+            if (!chofer.disponible(fechaProgramada, fechaFin))
        
             {
                 throw new ChoferOcupadoException($"El chofer {chofer.Nombre} ya se encuentra asignado a otro viaje en el mismo horario.");
@@ -91,4 +91,4 @@ public class Viaje
         }
 
         Console.WriteLine($"¡Verificación exitosa! Se generó el archivo: {path}");
-    
+    }
