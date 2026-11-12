@@ -41,6 +41,9 @@ public class Viaje
         this.vehiculo = vehiculo;
         this.choferes = choferes;
 
+ public DateTime FechaProgramada { get { return fechaProgramada; } }
+    public DateTime FechaFin { get { return fechaFin; } }
+
         // Registrar este viaje en la lista de cada chofer asignado
         foreach (var chofer in this.choferes)
         {
