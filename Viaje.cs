@@ -6,13 +6,13 @@ public class Viaje
     private string origen;
     private string destino;
     private double distancia;
-    private DateTime fechaProgramada;
-    private DateTime fechaFin;
+    public DateTime FechaProgramada { get; set; }
+    public DateTime FechaFin { get; set; }
     private double carga;
     private Vehiculo vehiculo;
     private List<Chofer> choferes;
-
-    // 2. CONSTRUCTOR 
+    
+    // 2. CONSTRUCTOR
     public Viaje(string codigo, string origen, string destino, double distancia, DateTime fechaProgramada, DateTime fechaFin, double carga, Vehiculo vehiculo, List<Chofer> choferes)
     {
         if (carga > vehiculo.CapacidadCarga)
@@ -21,7 +21,7 @@ public class Viaje
         }
         foreach (var chofer in choferes)
         {
-            if (chofer.TieneSuperposicionHoraria(fechaProgramada, fechaFin))
+            if (chofer.disponible(fechaProgramada, fechaFin))
        
             {
                 throw new ChoferOcupadoException($"El chofer {chofer.Nombre} ya se encuentra asignado a otro viaje en el mismo horario.");
@@ -41,7 +41,7 @@ public class Viaje
         // Registrar este viaje en la lista de cada chofer asignado
         foreach (var chofer in this.choferes)
         {
-            chofer.Viajes.Add(this);
+            chofer.listaViajes.Add(this);
         }
     }
 
