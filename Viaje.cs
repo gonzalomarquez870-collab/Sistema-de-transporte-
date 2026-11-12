@@ -46,20 +46,26 @@ public class Viaje
     }
 
     // 3. MÉTODOS DE CÁLCULO Y GESTIÓN INTERNA
-    public double CalcularCostoTotal()
-    {
-        double costoVehiculo = vehiculo.CalcularCostoOperativo(distancia, carga);
-        
-        // Suma de sueldos básicos de los choferes
-        double sueldoChoferes = 0;
-        foreach (var chofer in choferes)
+     public double CalcularCostoVehiculo()
         {
-            sueldoChoferes += chofer.SueldoBasico;
+            return (double)vehiculo.CalcularCostoOperativo(carga, distancia);
+        }
+     public double CalcularCostoSueldosChoferes()
+        {
+            double sueldoChoferes = 0;
+            foreach (var chofer in choferes)
+            {
+                sueldoChoferes += (double)chofer.ObtenerSueldoBasico();
+            }
+            return sueldoChoferes;
         }
 
-        return costoVehiculo + sueldoChoferes;
-    }
-
+    public double CalcularCostoTotal()
+        {
+            double costoVehiculo = CalcularCostoVehiculo();
+            double sueldoChoferes = CalcularCostoSueldosChoferes();
+            return costoVehiculo + sueldoChoferes;
+        }
     
     public void GenerarInformeCSV()
     {
