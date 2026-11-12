@@ -9,8 +9,8 @@ public class Viaje
     private string origen;
     private string destino;
     private double distancia;
-    public DateTime FechaProgramada { get; set; }
-    public DateTime FechaFin { get; set; }
+    private DateTime FechaProgramada;
+    Private DateTime FechaFin;
     private double carga;
     private Vehiculo vehiculo;
     private List<Chofer> choferes;
