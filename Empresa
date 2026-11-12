@@ -1,10 +1,17 @@
-using System;
-
-public class Empresa
+public void ListarVehiculos()
 {
-private string nombre;
-private string cuit;
-private List <chofer> choferes;
-private List <Vehiculo> vehiculo;
-
+    Console.WriteLine($"--- LISTADO DE VEHÍCULOS DE {nombre} ---");
+    foreach (var vehiculo in vehiculos)
+    {
+        Console.WriteLine($"- Matrícula: {vehiculo.Matricula} | Capacidad: {vehiculo.CapacidadCarga}kg");
+    }
+    
+}
+public void ListarChoferes()
+ {
+     
+    Console.WriteLine($"--- LISTADO DE COHFERES DE {nombre} ---");
+    foreach (var chofer in choferes)
+{
+	   Console.WriteLine($"- Nombre: {chofer.nombre} | DNI: {chofer.dni}");
 }
