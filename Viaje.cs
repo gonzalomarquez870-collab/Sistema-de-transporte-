@@ -41,8 +41,7 @@ public class Viaje
         this.vehiculo = vehiculo;
         this.choferes = choferes;
 
- public DateTime FechaProgramada { get { return fechaProgramada; } }
-    public DateTime FechaFin { get { return fechaFin; } }
+
 
         // Registrar este viaje en la lista de cada chofer asignado
         foreach (var chofer in this.choferes)
@@ -50,7 +49,8 @@ public class Viaje
             chofer.listaViajes.Add(this);
         }
     }
-
+ public DateTime FechaProgramada { get { return fechaProgramada; } }
+    public DateTime FechaFin { get { return fechaFin; } }
     // 3. MÉTODOS DE CÁLCULO Y GESTIÓN INTERNA
      public double CalcularCostoVehiculo()
         {
